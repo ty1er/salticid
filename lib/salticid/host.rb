@@ -471,7 +471,8 @@ class Salticid::Host
       if tunnel
         @ssh = tunnel.ssh(name, user)
       else
-        @ssh = Net::SSH.start(name, user)
+        opts = { :password => 'reverse', :verbose => :debug}
+        @ssh = Net::SSH.start(name, user, opts)
       end
     end
   end
